@@ -7,4 +7,5 @@ public interface Subject {
     void notifyObserver();
 
 
+    void notifyObservers();
 }

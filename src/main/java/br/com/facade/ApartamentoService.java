@@ -13,4 +13,9 @@ public class ApartamentoService implements IApartamentoService{
     procurarPorEnd();
     procurarPorPreço();
 }
+
+    @Override
+    public void alugarApartamento() {
+
+    }
 }

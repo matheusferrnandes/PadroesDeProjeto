@@ -1,11 +1,12 @@
 package br.com.observer;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observer;
 
 public class Jornalista implements Subject {
 
-    private ArrayList<Observer> observers = new ArrayList<>();
+    private List<Observer> observers = new ArrayList<>();
     private String Titulo, Sumario, Imagem, Texto;
 
     public String getTitulo() {
@@ -32,11 +33,11 @@ public class Jornalista implements Subject {
         Sumario = sumario;
     }
 
-    public ArrayList<Observer> getObservers() {
+    public List<Observer> getObservers() {
         return observers;
     }
 
-    public void setObservers(ArrayList<Observer> observers) {
+    public void setObservers(List<Observer> observers) {
         this.observers = observers;
     }
 
@@ -68,8 +69,14 @@ public class Jornalista implements Subject {
 
     @Override
     public void notifyObserver() {
-        observers.forEach(observer -> observer.update(this));
+
     }
+
+    @Override
+    public void notifyObservers() {
+        observers.forEach(this::accept);
+    }
+
 
     public String toString(){
          return "Jornalista{" +
@@ -80,4 +87,8 @@ public class Jornalista implements Subject {
                  ", texto=" + Texto +
                  "}";
 }
+
+    private void accept(Observer observer) {
+        observer.update(this);
+    }
 }
