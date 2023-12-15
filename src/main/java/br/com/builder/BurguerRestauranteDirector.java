@@ -5,5 +5,6 @@ public class BurguerRestauranteDirector {
     }
 
     public Burguer buildBurguer() {
+        return null;
     }
 }
